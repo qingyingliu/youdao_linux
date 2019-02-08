@@ -1,6 +1,6 @@
 ## 有道词典linux版
 
-clone地址： https://github.com/Lewin671/youdao_linux, 欢迎大家star。
+clone地址： git@github.com:Lewin671/youdao_linux.git, 欢迎大家star。
 
 安装说明: 进入项目的bash文件夹，然后在终端下执行命令:
 `bash setup.sh` 或者`./setup.sh`。
