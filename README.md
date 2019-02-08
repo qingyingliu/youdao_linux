@@ -1,6 +1,6 @@
 ## 有道词典linux版
 
-clone地址： https://github.com/Lewin671/youdao_linux
+clone地址： https://github.com/Lewin671/youdao_linux, 欢迎大家star。
 
 安装说明: 进入项目的bash文件夹，然后在终端下执行命令:
 `bash setup.sh` 或者`./setup.sh`。
@@ -13,7 +13,7 @@ clone地址： https://github.com/Lewin671/youdao_linux
 使用说明：
 1. 默认查询命令是`query [单词或者短语]`。如果需要更改命令，请在`~/.bashrc`中更改别名(alias)。
 2. 如果有例句有显示出来，最多显示三条。
-
+   
 效果:
 
 ![example1](./pic/example1.png)
