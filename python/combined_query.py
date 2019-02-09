@@ -3,6 +3,7 @@ import sys
 from color import *
 import os
 import math
+import datetime
 
 if __name__ == "__main__":
         
@@ -42,6 +43,7 @@ if __name__ == "__main__":
         # 判断是否有这个单词
         if(len(meanings)==0):
             print(fmt(color.RED,'sorry, there are no this word.'))
+            sys.exit(100)
             
         else:  
             # 单词
@@ -61,3 +63,11 @@ if __name__ == "__main__":
                 print(fmt(color.PURPLE, cn_sentence[i]))
 
             print()
+
+            # 添加到统计csv
+            d = datetime.datetime.now()
+            df1 = pd.DataFrame({
+                'word':[word],
+                'date': ["%s-%s-%s %s:%s:%s" % (d.year,d.month,d.day,d.hour,d.minute,d.second)]
+            })
+            df1.to_csv('~/youdao_linux/data/count.csv', mode='a', header=False,index=False)

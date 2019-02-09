@@ -1,5 +1,7 @@
 import scrapy
 from bs4 import BeautifulSoup
+import pandas as pd
+import datetime
 
 class QuerySpider(scrapy.Spider):
     # usage: scrapy crawl query -a word=good --nolog
@@ -50,18 +52,22 @@ class QuerySpider(scrapy.Spider):
             #print(item)
 
         word = response.url[21:].strip()
-        if phonetic_symbol != None :
-            yield{
+        if meanings[0] != None:
+            df = pd.DataFrame({
                 # 防止错误编码
-                'word': word.replace('%20',' '),
-                'phonetic_symbol': phonetic_symbol,
-                'word_attr': word_attr,
-                'meanings': meanings,
-                'en_sentence1': en_sentence[0],
-                'cn_sentence1': cn_sentence[0],
-                'en_sentence2': en_sentence[1],
-                'cn_sentence2': cn_sentence[1],
-                'en_sentence3': en_sentence[2],
-                'cn_sentence3': cn_sentence[2],
-            }
+                'word': [word.replace('%20',' ')],
+                'phonetic_symbol': ", ".join(phonetic_symbol),
+                'word_attr': ",".join(word_attr),
+                'meanings': ",".join(meanings),
+                'en_sentence1': [en_sentence[0]],
+                'cn_sentence1': [cn_sentence[0]],
+                'en_sentence2': [en_sentence[1]],
+                'cn_sentence2': [cn_sentence[1]],
+                'en_sentence3': [en_sentence[2]],
+                'cn_sentence3': [cn_sentence[2]],
+            })
+            df.dropna(how='all',inplace=True)
+            df.to_csv('~/youdao_linux/data/word.csv', mode='a', header=False,index=False)
+
+
 
