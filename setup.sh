@@ -5,7 +5,15 @@ echo "alias query='bash ~/youdao_linux/query.sh'" >> ~/.bashrc
 echo "# >>>>>>>>>>>>> youdao_linux configuration >>>>>>>>>>>>>>>" >>~/.bashrc
 
 # 复制到home
-cp -r ./../../ ~
+cp -r ./../youdao_linux ~
+# 判断是否成功
+if [ $? -eq 0 ]
+then
+    echo "move the project to ~"
+else
+    echo "error"
+    exit 1
+fi
 
 # 配置config.py
 rm ~/youdao_linux/package/config.py
