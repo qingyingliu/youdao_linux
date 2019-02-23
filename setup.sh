@@ -29,7 +29,7 @@ echo "write config.py is ok!"
 
 # 安装pygame
 pip install pygame
-if [ $? -eq 0]
+if [ $? -eq 0 ]
 then
     echo "pygame install is ok!"
 else
